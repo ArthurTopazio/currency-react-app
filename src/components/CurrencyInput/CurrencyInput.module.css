@@ -1,0 +1,31 @@
+.wrapper {
+    display: flex;
+    padding: 0 15px;
+    border: 2px solid #939393;
+    border-radius: 14px;
+    transition: border 0.4s ease;
+}
+
+.wrapper:hover {
+    border: 2px solid #FFD56B;
+    transition: border 0.4s ease;
+}
+
+.amountInput, .currencySelect {
+    height: 60px;
+    border: 0;
+}
+
+.amountInput {
+    width: 250px;
+}
+
+.amountInput::placeholder {
+    color: #E0E6ED;
+}
+
+@media all and  (max-width: 600px) {
+    .amountInput {
+        width: 200px;
+    }
+}

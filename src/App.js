@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+import Header from "./components/Header/Header";
+import Content from "./components/Content/Content";
+
 import './App.css';
 
-function App() {
+const App = () => {
+
+  const [rates, setRates] = useState([]);
+
+  useEffect(() => {
+    axios.get("https://v6.exchangerate-api.com/v6/f63bbf96b4bb455955e68f52/latest/USD")
+      .then(res => {
+        setRates(res.data.conversion_rates)
+      })
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header rates={rates} />
+      <Content rates={rates} />
     </div>
   );
 }
